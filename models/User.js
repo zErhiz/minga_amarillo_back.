@@ -14,5 +14,5 @@ let schema = new mongoose.Schema(
         timestamps: true
     })
     let collection = 'users' //debe ser siempre en plural por que es un conjunto de datos/documentos/recursos y en lo posible en minuscula
-    let User = mongoose.model(schema, collection)
+    let User = mongoose.model(collection,schema)
     export default User
