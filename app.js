@@ -9,12 +9,22 @@ import cors from 'cors';
 import {__dirname } from './utils.js';
 import indexRouter from'./routes/index.js';
 
+import notFound from './middelwares-m-03/notFound.js';
+import errorHandler from './middelwares-m-03/errorHandler.js';
+
 import  './config/database.js';
 const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.use((req,res,next)=>{
+  console.log('logged');
+
+  next()
+})
+
 //middlewares
 app.use(cors());
 app.use(logger('dev'));
@@ -24,6 +34,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+
+app.use(notFound)
+app.use(errorHandler)
 
 
 // catch 404 and forward to error handler
