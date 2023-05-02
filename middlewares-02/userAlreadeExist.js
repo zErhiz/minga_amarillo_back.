@@ -1,7 +1,7 @@
 import Author from '../models/Author.js'
 
 
-async function accountExistsSignUp(req,res,next) {
+async function userAlreadeExist(req,res,next) {
     const author = await Author.findOne({name: req.body.name})
     if (author) {
         return res.status(400).send('author already exist!')
@@ -10,4 +10,4 @@ async function accountExistsSignUp(req,res,next) {
     return next()
 }
 
-export default accountExistsSignUp
+export default userAlreadeExist
