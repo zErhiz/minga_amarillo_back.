@@ -1,4 +1,4 @@
-//me faltan importar el error
+import createHttpError from 'http-errors'
 import Manga from "../../models/Manga.js"
 /* import crypto from 'crypto' */
 /* import bcryptjs from ' bcryptjs ' */
@@ -22,7 +22,7 @@ let create = async(req,res,next)=>{
 
     } catch (error) {
         
-        return res.status(500).json({menssage: 'Manga creation failed' })
+        next(createHttpError )
     }
 }
 export default create
