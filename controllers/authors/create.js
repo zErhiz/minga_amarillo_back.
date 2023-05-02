@@ -7,7 +7,7 @@ const controller = {
          {
             req.body.user_id = '64496465077201479936117f'
             req.body.active = true
-            console.log(req)
+            console.log(req.body)
             let one = await Author.create(req.body)
             return res.status(201).json({
             success: true,

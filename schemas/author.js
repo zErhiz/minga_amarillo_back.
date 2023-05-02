@@ -1,4 +1,4 @@
-import Joi from "joi-oid"; //validador
+import Joi from "joi"; //validador
 
 let authorSchema = Joi.object(
     {
@@ -8,8 +8,7 @@ let authorSchema = Joi.object(
         country:Joi.string().required(),
         date: Joi.date(), //si no aclaro que es requerido es false por defecto
         photo:Joi.string().required(), 
-        active:Joi.boolean().required(),
-        user_id: Joi.object().required(),
+       
        },
     
 )
