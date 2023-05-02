@@ -19,7 +19,6 @@ let create = async(req, res, next)=>{
             success: false,
             message: "ERROR CREATING CHAPTER",
         })
-        next(error)
     }
 }
 
