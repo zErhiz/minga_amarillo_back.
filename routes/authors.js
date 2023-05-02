@@ -4,7 +4,7 @@ import read from '../controllers/authors/read.js'
 import controller from '../controllers/authors/create.js'
 import authorSchema from '../schemas/author.js'
 import validator from '../middlewares-02/validator.js'
-import authorAlreadeExist from '../middlewares-02/userAlreadeExist.js';
+import authorAlreadeExist from '../middlewares-02/authorAlreadeExist.js';
 import passport from '../middlewares-02/passport.js';
 
 const create = controller.create
