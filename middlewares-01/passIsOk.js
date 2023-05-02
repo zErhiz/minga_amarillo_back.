@@ -5,6 +5,9 @@ const form_pass= req.body.password
 if(bycryptjs.compareSync(form_pass, db_pass)){
     return next()
 }
-return res.status(400).send('wrong credentials')
+return res.status(400).json({
+    success:false,
+    message:'wrong credentials'
+})
 }
 export default passwordIsOk
