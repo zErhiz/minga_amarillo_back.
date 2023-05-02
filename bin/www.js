@@ -10,6 +10,7 @@
 import app from '../app.js'
 import logger from 'debug'
 import http from 'http'
+import nodemon from 'nodemon'
 const debug = logger('reactbac1:server')
 
 /**
