@@ -6,11 +6,12 @@ import Manga from "../../models/Manga.js"
 let create = async(req,res,next)=>{
 
     
-    try {  //llamo al modelo manga
+    try { 
     req.body.author_id= '64496465077201479936117f'
     req.body.company_id='64496465077201479936118e'
     req.body.cover_photo="https://i.postimg.cc/ydWYPLCC/ao-haru-ride-752359695-large.jpg"
     console.log(req.body);
+     //llamo al modelo manga
        let one=  new Manga(req.body)
        await one.save()
        return res.status(201).json({
@@ -22,7 +23,7 @@ let create = async(req,res,next)=>{
 
     } catch (error) {
         
-        next(createHttpError )
+        next(error )
     }
 }
 export default create

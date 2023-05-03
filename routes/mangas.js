@@ -13,5 +13,5 @@ let router = Router()
 router.get('/', read);
   
 
-router.post('/',validator(mangaCreate), create)
+router.post('/',passport.authenticate('jwt',{session:false}),validator(mangaCreate),create)
 export default router
