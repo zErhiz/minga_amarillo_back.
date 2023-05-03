@@ -11,12 +11,12 @@ import Company from "../../models/Company.js"
                 data: req.body
             })
         } catch (error) {
-            next(error)
+            return res.status(400).json({
+                success: false,
+                message: "ERROR CREATING COMPANY",
+            })
         }
 }
 
 export default create
 
-// //const { user } = req
-// req.body.user_id = req.user._id
-// req.body.active = true
