@@ -9,7 +9,7 @@ let signin = async(req, res, next)=>{
     
    )
    const token = jwt.sign(
-    {id:req.user._id},
+    {id:req.user.id},
     process.env.TOKEN,
     {expiresIn:60*60*24}
    )
