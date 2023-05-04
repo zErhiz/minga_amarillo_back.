@@ -6,10 +6,10 @@ let mangaCreate=Joi.object({
     "string.max": "the title must not have more than 30 characters",
     "string.required": "the title is required"
 }),
-  description: Joi.string().required().message({
-    "any.required": "Description is a required field.",
-    "string.empty": "Description cannot  be an empty field and need 10 leters."
+description: Joi.string().required().min(10).message({
+  "any.required": "Description is a required field.",
+  "string.empty": "Description cannot  be an empty field and need 10 leters."
 }),
-  category_id: Joi.string().required()
-})
+    category_id: Joi.string().required()
+  })
   export default mangaCreate
