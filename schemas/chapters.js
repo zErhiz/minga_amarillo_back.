@@ -7,7 +7,12 @@ const chapterCreate = Joi.object({
         "string.max": "the title must not have more than 30 characters",
         "string.required": "the title is required"
     }),
-    pages: Joi.array().items(Joi.string()).required(),
+
+    pages: Joi.array().items(Joi.string()).required().min(1).messages({
+       
+        'string.empty': 'the pages cannot be empty'
+    }),
+
     order: Joi.number().required(),
 })
 
