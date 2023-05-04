@@ -8,8 +8,10 @@ import passport from '../middlewares-M04/passport.js';
 let router = Router()
 
 router.get('/', read);
-router.post('/',validator(chapterCreate), create)
+
+router.post('/', passport.authenticate('jwt',{session:false}),validator(chapterCreate), create)
   
 export default router
 
-//   passport.authenticate('jwt',{session:false}),
+// 
+
