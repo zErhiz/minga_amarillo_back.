@@ -4,7 +4,7 @@ import User from "../models/User.js";
 passport.use(
     new passportJwt.Strategy({
         jwtFromRequest:passportJwt.ExtractJwt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: process.env.SECRET
+        secretOrKey: process.env.TOKEN
     },
     async (jwt_payload, done)=>{
         try{

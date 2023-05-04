@@ -3,7 +3,7 @@ import Joi from "joi";
 const schema = Joi.object({
     name: Joi.string().required().min(3).max(140).messages({
         "any.required": "Name is a required field.",
-        "string.empty": "Name cannot be an empty field."
+        "string.empty": "Name cannot be and need 3 leters an empty field."
     }),
     logo: Joi.string().required().messages({
         "any.required": "Logo is a required field.",
@@ -15,7 +15,7 @@ const schema = Joi.object({
     }),
     description: Joi.string().required().min(10).message({
         "any.required": "Description is a required field.",
-        "string.empty": "Description cannot be an empty field."
+        "string.empty": "Description cannot  be an empty field and need 10 leters."
     })
 })
 
