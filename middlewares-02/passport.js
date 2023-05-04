@@ -6,7 +6,7 @@ passport.use(
     new passportJwt.Strategy(   //desarrolla una estrategia de extracción para extraer el token. 
         {
             jwtFromRequest: passportJwt.ExtractJwt.fromAuthHeaderAsBearerToken(),
-            secretOrKey: process.env.TOKEN
+            secretOrKey: process.env.SECRET
         },
         async (jwt_payload, done) => { // si devuelve algo, esta en el jwt_payload, son solamente los datos codificados no es todo. 
             try {
