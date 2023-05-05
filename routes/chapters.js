@@ -4,14 +4,15 @@ import create from '../controllers/chapters/create.js';
 import validator from "../middlewares-M04/validator.js"
 import chapterCreate from "../schemas/chapters.js"
 import passport from '../middlewares-M04/passport.js';
+import next_order from '../middlewares-01/next_order.js';
 
 let router = Router()
 
 router.get('/', read);
 
-router.post('/', passport.authenticate('jwt',{session:false}),validator(chapterCreate), create)
+router.post('/',validator(chapterCreate),next_order, create)
   
 export default router
 
-// 
+// passport.authenticate('jwt',{session:false})validator(chapterCreate),
 
