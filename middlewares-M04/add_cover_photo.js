@@ -1,6 +1,7 @@
-async function addFrontPhoto(req, res, next) {
+async function addCoverPhoto(req, res, next) {
+    
     req.body.cover_photo = req.body.pages
     next()
 }
 
-export default addFrontPhoto
+export default addCoverPhoto
