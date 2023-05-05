@@ -1,4 +1,4 @@
-import Chapter from "../models/Chapter";
+import Chapter from "../models/Chapter.js";
 async function exist_order(req, res, next) {
     const order = req.body.order
     const existorder = await Chapter.findOne({ order: order })
