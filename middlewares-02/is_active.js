@@ -4,8 +4,8 @@ import Company from "../models/Company"
 
 
 function is_active(req, res, next) {
-    const userId = req.user.id; // obtener el ID del usuario logueado
-    // buscar el autor correspondiente al usuario
+    const userId = req.user.id; // obtenenemos el id 
+    // buscamos el autorsito 
     Author.findOne({ user_id: userId })
       .then((author) => {
         if (!author) {
