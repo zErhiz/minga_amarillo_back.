@@ -1,7 +1,9 @@
 import createHttpError from 'http-errors'
 import Manga from "../../models/Manga.js"
 /* import crypto from 'crypto' */
+//datos ramdoms
 /* import bcryptjs from ' bcryptjs ' */
+//datos encriptados
 
 let create = async(req,res,next)=>{
 
