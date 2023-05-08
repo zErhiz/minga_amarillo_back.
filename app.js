@@ -10,7 +10,7 @@ import {__dirname } from './utils.js';
 import indexRouter from'./routes/index.js';
 
 import notFound from './middelwares-m-03/notFound.js';
-import errorHandler from './middelwares-m-03/errorHandler.js';
+// import errorHandler from './middelwares-m-03/errorHandler.js';
 
 import  './config/database.js';
 const app = express();
@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', indexRouter);
 
 app.use(notFound)
-app.use(errorHandler)
+// app.use(errorHandler)
 
 
 // catch 404 and forward to error handler

@@ -8,6 +8,7 @@ import validator from '../middlewares-M04/validator.js';
 let router = Router()
 
 router.get('/', read);
+
 router.post('/',passport.authenticate('jwt',{session:false}), validator(companyCreate), create)  
 export default router
 
