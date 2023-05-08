@@ -13,7 +13,7 @@ let router = Router()
 
 /* router.post('/',(req,res,next)=> res.status(200).send('autor creado')) */
 router.get('/',read)
-router.get('/:author_id',get_one)
+router.get('/:id',get_one)
 router.post('/',passport.authenticate('jwt',{session:false}),validator(authorSchema),authorAlreadeExist,create)
 /* router.put('/:id',(req,res,next)=> res.status(200).send('autor modificado')) */
 /* router.delete('/:id',(req,res,next)=> res.status(200).send('autor eliminado')) */
