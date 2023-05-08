@@ -10,9 +10,10 @@ let router = Router()
 
 router.get('/', read);
 
-router.post('/',validator(chapterCreate),next_order, create)
+
+router.post('/',validator(chapterCreate),passport.authenticate('jwt',{session:false}),validator(chapterCreate),next_order, create)
   
 export default router
 
-// passport.authenticate('jwt',{session:false})validator(chapterCreate),
+ 
 
