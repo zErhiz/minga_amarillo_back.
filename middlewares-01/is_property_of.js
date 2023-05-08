@@ -1,4 +1,4 @@
-import Manga from "../models/Manga.js";
+ import Manga from "../models/Manga.js";
 
 
 const property =async (req,res,next)=>{
