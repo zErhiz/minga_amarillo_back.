@@ -3,7 +3,7 @@ import Chapter from "../../models/Chapter.js";
 let get_one = async(req,res, next) => {
     try {
         // let {manga_id} = req.params
-        let all = await Chapter.findById(req.params.id).select(" -createdAt -updatedAt -__v")
+        let all = await Chapter.findById(req.params.id).select("-createdAt -updatedAt -__v -cover_photo")
         // console.log(all);
         
        let next = await Chapter.findOne({
