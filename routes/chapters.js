@@ -9,7 +9,7 @@ import get_chapters from '../controllers/chapters/get_chapters.js';
 let router = Router()
 
 router.get('/',get_chapters)
-/*  router.get('/',read);  */ 
+/*  router.get('/',read);   */
 
 router.post('/', passport.authenticate('jwt',{session:false}),validator(chapterCreate), create)
   
