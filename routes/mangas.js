@@ -8,10 +8,10 @@ import getOne from '../controllers/mangas/get_one.js';
 
 
 
-/* import accountSignUp from '../middelwares/accountSignUp.js'; */
+
 let router = Router()
 
-router.get('/', read);
+router.get('/', read)
 router.get('/:id',getOne)
   
 
