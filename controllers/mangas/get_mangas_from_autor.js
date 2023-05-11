@@ -18,7 +18,7 @@ let get_mangas_from_author = async (req, res, next) => {
       });
     }
     //si ahi mangas agarro y uso esto
-    const mangas = await Manga.find(  { author_id }, "title cover_photo description -_id")
+    const mangas = await Manga.find(  { author_id }, "title cover_photo description _id")
       .sort(sort)
       .limit(limit)
       .skip(skip);
@@ -26,6 +26,7 @@ let get_mangas_from_author = async (req, res, next) => {
     res.status(200).json({
       success: true,
       mangas,
+    contador
     });
   } catch (error) {
     next(error);

@@ -5,7 +5,7 @@ try {
       let {id}=req.params  
      
       
-let manga = await Manga.findById(id,'-_id -createdAt -updatedAt -company_id  -__v').populate('author_id','name -_id')
+let manga = await Manga.findById(id,'-_id -createdAt -updatedAt -company_id  -__v').populate('author_id','name _id')
                                                                                    .populate('category_id','name -_id')
 console.log('----------------------------');                                    
 console.log(manga);

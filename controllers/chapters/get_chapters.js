@@ -23,7 +23,7 @@ let get_chapters = async(req, res, next) => { // la funcion controladora debe se
     }
     try                          
     {
-let all = await Chapter.find(queries,'title cover_photo order -_id').sort(sort)     
+let all = await Chapter.find(queries,'title cover_photo order _id').sort(sort)     
 .skip(pagination.page > 0 ? (pagination.page-1)*pagination.limit:0)//desde donde pagino 
 .limit(pagination.limit > 0 ? pagination.limit:0)//hasta donde pagino 
 return res.status(200)                   
