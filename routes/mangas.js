@@ -15,7 +15,7 @@ let router = Router()
 
 
 router.get('/', get_mangas);
-router.get('/:manga_id',one )
+
 
 
 router.get('/author/:author_id', getMangas);
