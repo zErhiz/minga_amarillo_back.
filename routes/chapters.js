@@ -1,5 +1,5 @@
 import  { Router }  from 'express';
-
+import read from '../controllers/chapters/read.js'
 import create from '../controllers/chapters/create.js';
 import validator from "../middlewares-M04/validator.js"
 import chapterCreate from "../schemas/chapters.js"
@@ -9,11 +9,11 @@ import get_chapters from '../controllers/chapters/get_chapters.js';
 let router = Router()
 
 router.get('/',get_chapters)
-/*  router.get('/',read);   */
+router.get('/',read);   
 
 router.post('/', passport.authenticate('jwt',{session:false}),validator(chapterCreate), create)
   
 export default router
 
-// 
+
 
