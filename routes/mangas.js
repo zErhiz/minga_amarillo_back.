@@ -18,7 +18,7 @@ router.get('/', get_mangas);
 router.get('/:id',getOne)
 
 
-router.get('/author/:author_id', getMangas);
+router.get('/author/:author_id', passport.authenticate('jwt',{session:false}),getMangas);
 
 
 router.post('/',passport.authenticate('jwt',{session:false}),validator(mangaCreate),isActive,existtitle,addcover_photo, create)
