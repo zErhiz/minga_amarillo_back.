@@ -2,9 +2,8 @@ import Company from "../../models/Company.js";
 
 let admin = async (req, res, next) => {
   try {
-    const allCompany = await Company.find();       //findeo 
-    const activeCompany = allCompany.filter(company => company.active); //filtro active 
-    const inactiveCompany = allCompany.filter(company => !company.active);//si no esta activop
+    const activeCompany = await Company.find({ active: true });
+    const inactiveCompany = await Company.find({ active: false });
 
     const resultado = {           
         activeCompany,
