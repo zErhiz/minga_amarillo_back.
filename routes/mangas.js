@@ -9,15 +9,15 @@ import isActive from '../middlewares-02/is_active.js'
 import existtitle from "../middlewares-M04/exists_title.js"
 import getMangas from '../controllers/mangas/get_mangas_from_autor.js';
 import addcover_photo from "../middlewares-M04/add_cover_photo.js"
-
-
+import admin_active from "../controllers/authors/admin.js"
+import admin from '../controllers/companies/admin.js';
 let router = Router()
 
 
 router.get('/', get_mangas);
 router.get('/:id',getOne)
-
-
+router.get('/admin',passport.authenticate('jwt',{session:false}),admin_active)
+router.get('/admin',passport.authenticate('jwt',{session:false}),admin)
 router.get('/author/:author_id', passport.authenticate('jwt',{session:false}),getMangas);
 
 
