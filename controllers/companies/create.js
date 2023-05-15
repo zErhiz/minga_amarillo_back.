@@ -1,9 +1,10 @@
 import Company from "../../models/Company.js"
-
+import User from "../../models/User.js"
      let create =  async (req, res, next) => {
         try {
-            req.body.user_id = '64496464077201479936117b'
-            req.body.active = true
+            const user = req.user
+      req.body.user_id = user._id
+            req.body.active = false
             await Company.create(req.body)
             return res.status(200).json({
                 success: true,

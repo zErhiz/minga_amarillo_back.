@@ -11,17 +11,21 @@ import isVerified from '../middlewares-01/isVerified.js'
 import passwordIsOk from '../middlewares-01/passIsOk.js';
 import passport from '../middlewares-01/passport.js';
 import signout from '../controllers/users/signout.js';
-
+import updateRole from '../controllers/users/update_role.js'
+import updateRoleCompany from "../controllers/users/update_role_company.js"
+import midd2 from "../middlewares-02/userRole.js"
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 router.get('/admins',(req,res,next) => res.status(200).json(
   {
- succes : true,
- admins : []
+    succes : true,
+    admins : []
   }))
   router.post('/signup',validator(userCreateSignUp),accountSignUp, signup)
   router.post('/signin', validator(userCreateSignIn), accountExistsSignIn,isVerified,passwordIsOk, signin)
-  router.post('/signout',passport.authenticate('jwt',{session:false}) ,signout)
+  router.post('/signout',passport.authenticate('jwt',{session:false}) ,signout) 
+   router.put('/role/author/:id',passport.authenticate('jwt',{session:false}),midd2, updateRole) 
+  router.put('/role/company/:id',passport.authenticate('jwt',{session:false}),midd2,updateRoleCompany)
   export default router;
