@@ -5,7 +5,7 @@ import User from '../../models/User.js'
 const controller = {
   create: async (req, res, next) => {
     try {
-      // Assuming User is created elsewhere and available in req.user
+     
       const user = req.user
       req.body.user_id = user._id
       req.body.active = false
