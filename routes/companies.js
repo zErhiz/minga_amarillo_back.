@@ -7,8 +7,8 @@ import validator from '../middlewares-M04/validator.js';
 import admin from '../controllers/companies/admin.js';
 let router = Router()
 
-router.get('/', read);
-router.get('/admin',admin)
+router.get('/', passport.authenticate('jwt',{session:false}),read);
+router.get('/admin',passport.authenticate('jwt',{session:false}),admin)
 router.post('/',passport.authenticate('jwt',{session:false}), validator(companyCreate), create)  
 export default router
 

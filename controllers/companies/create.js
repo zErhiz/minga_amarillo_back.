@@ -4,7 +4,7 @@ import User from "../../models/User.js"
         try {
             const user = req.user
       req.body.user_id = user._id
-            req.body.active = true
+            req.body.active = false
             await Company.create(req.body)
             return res.status(200).json({
                 success: true,
