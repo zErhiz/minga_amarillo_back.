@@ -31,7 +31,8 @@ let all_from_chapters = async(req, res, next)=>{
         success:true, response:all
       })
     } catch (error) {
-      next (error)
+      return res.status(400).json({error: "a ocurrido un problema"})
     }
+    
   }
   export default all_from_chapters
