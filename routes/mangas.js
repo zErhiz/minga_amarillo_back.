@@ -15,9 +15,9 @@ let router = Router()
 
 
 router.get('/', get_mangas);
+router.get('/authors/admin',passport.authenticate('jwt',{session:false}),admin_active)
+router.get('/companies/admin',passport.authenticate('jwt',{session:false}),admin)
 router.get('/:id',getOne)
-router.get('/admin',passport.authenticate('jwt',{session:false}),admin_active)
-router.get('/admin',passport.authenticate('jwt',{session:false}),admin)
 router.get('/author/:author_id', passport.authenticate('jwt',{session:false}),getMangas);
 
 
