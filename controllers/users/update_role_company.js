@@ -7,10 +7,8 @@ const update_role_company= async (req, res, next) => {
 
     // Buscamos por id
     const user = await User.findById(id)
-console.log(user)
 
 let company = await Company.findOne({user_id: id})
-console.log(company)
 
 
 if (user.role === 2 && company.active === true) {
@@ -26,9 +24,10 @@ await company.save()
  
 
 
-    return res.json({   success: true, message: "The company is verified" });
+return res.status(200).json({ success: true, message: "The company is verified" });
   } catch (error) {
-    next(error);
+    return res.status(400).json({ success: false, message: "Failed to update the role"})
+ 
   }
 };
 

@@ -5,10 +5,8 @@ const changerole = async (req, res, next) => {
   try {
     const { id } = req.params;
 const user = await User.findById(id)
-console.log(user)
 
 let author1 = await Author.findOne({user_id: id})
-console.log(author1)
 
 
 if (user.role === 1 && author1.active === true) {
@@ -26,10 +24,10 @@ await author1.save()
 
     
 
-    return res.json({   success: true, message: "The author is verified" });
+    return res.status(200).json({   success: true, message: "The author is verified" });
   } catch (error) {
-    console.log(error)
-    next(error);
+    return res.status(400).json({ success: false, message: "Failed to update the role"})
+   
   }
 };
 
