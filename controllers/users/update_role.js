@@ -19,19 +19,21 @@ else if(user.role === 0 &&  author1.active === false ){
   user.role = 1,
   author1.active = true
 }
-await user.save()
-await author1.save()
+
+const newUser = await user.save()
+const newAuthor = await author1.save()
+if (newUser === user && newAuthor === author1) {
+  return res.status(200).json({   success: true, message: "The author is verified" });
+}
+else{
+  return res.status(400).json({succes:false, message:"oops an error occurred in the update"})
+}
 // Buscamos por id
 
-if (!user || !author1) {
-  return res
-    .status(400)
-    .json({ success: false, message: "Update failed" });
-}
 
     
 
-    return res.status(200).json({   success: true, message: "The author is verified" });
+ 
   } catch (error) {
     next(error);
   }

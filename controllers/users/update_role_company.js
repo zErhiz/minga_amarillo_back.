@@ -21,18 +21,18 @@ else if(user.role === 0 &&  company.active === false ){
   user.role = 2,
   company.active = true
 }
-await user.save()
-await company.save()
- 
-if (!user || !company) {
-  return res
-    .status(400)
-    .json({ success: false, message: "Update failed" });
+const newUser = await user.save()
+const newCompany = await company.save()
+if (newUser === user && newCompany === company) {
+  return res.status(200).json({   success: true, message: "The author is verified" });
+}
+else{
+  return res.status(400).json({succes:false, message:"oops an error occurred in the update"})
 }
 
 
 
-return res.status(200).json({ success: true, message: "The company is verified" });
+
   } catch (error) {
    next(error)
  
