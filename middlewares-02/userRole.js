@@ -1,4 +1,4 @@
-import User from "../models/User.js";
+/* import User from "../models/User.js";
 
 async function exist(req, res, next) {
   try {
@@ -22,4 +22,4 @@ async function exist(req, res, next) {
   }
 }
 
-export default exist;
+export default exist; */

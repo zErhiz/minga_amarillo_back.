@@ -4,20 +4,31 @@ import Author from "../../models/Author.js";
 const changerole = async (req, res, next) => {
   try {
     const { id } = req.params;
+const user = await User.findById(id)
+console.log(user)
 
-    // Buscamos por id
-    const user = await User.findByIdAndUpdate(id, { role: 1 });
-  
+let author1 = await Author.findOne({user_id: id})
+console.log(author1)
 
-    let author = await Author.findOneAndUpdate(
-      { user_id: id },
-      { active: true },
-      { new: true }
-    );
-   
+
+if (user.role === 1 && author1.active === true) {
+  user.role = 0,
+  author1.active = false
+} 
+else if(user.role === 0 &&  author1.active === false ){
+  user.role = 1,
+  author1.active = true
+}
+await user.save()
+await author1.save()
+// Buscamos por id
+
+
+    
 
     return res.json({   success: true, message: "The author is verified" });
   } catch (error) {
+    console.log(error)
     next(error);
   }
 };
