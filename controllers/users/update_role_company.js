@@ -10,7 +10,9 @@ const update_role_company= async (req, res, next) => {
 
 let company = await Company.findOne({user_id: id})
 
-
+if (!user || !company) {
+  return res.status(400).json({ success: false, message: "User or company not found" });
+}
 if (user.role === 2 && company.active === true) {
   user.role = 0,
   company.active = false
@@ -26,7 +28,7 @@ await company.save()
 
 return res.status(200).json({ success: true, message: "The company is verified" });
   } catch (error) {
-    return res.status(400).json({ success: false, message: "Failed to update the role"})
+   next(error)
  
   }
 };
