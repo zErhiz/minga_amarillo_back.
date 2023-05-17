@@ -3,7 +3,7 @@ import Manga from "../../models/Manga.js";
 let update =async(req,res,next)=>{
     try {
         
-        let manga =Manga.findByIdAndUpdate(
+        let manga = await Manga.findByIdAndUpdate(
             req.params.id,
             req.body,
             {new:true}

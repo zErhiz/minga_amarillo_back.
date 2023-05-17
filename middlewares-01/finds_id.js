@@ -10,13 +10,13 @@ async function finds_id(req, res, next){
         })
     }
     req.body.author_id=author._id
-    /* const company = await Company.findOne({user_id: req.user._id})
+   /*  const company = await Company.findOne({user_id: req.user._id})
     if(!company){
         return res.status(400).json({
             message:'company not found '
         })
     }
-    req.body.company_id=company._id */
+    req.body.company_id=company._id  */
      next()
 }
 export default finds_id

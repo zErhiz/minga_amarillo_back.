@@ -14,15 +14,17 @@ import getMe from '../controllers/mangas/get_me.js';
 import is_active from '../middlewares-02/is_active.js';
 import is_propery_of from '../middlewares-01/is_property_of.js'
 import update from '../controllers/mangas/update.js';
+import destroy from '../controllers/mangas/destroy.js';
 
 let router = Router()
 
 
 router.get('/', get_mangas);
+router.get('/author/:author_id', passport.authenticate('jwt',{session:false}),getMangas);
 router.get('/me', passport.authenticate('jwt',{session:false}),finds_id,getMe)
 router.get('/:id',getOne)
-router.get('/author/:author_id', passport.authenticate('jwt',{session:false}),getMangas);
 router.put('/:id',passport.authenticate('jwt',{session:false}),finds_id,is_active,update)
+router.delete('/:id', passport.authenticate('jwt',{session:false}),destroy)
 
 router.post('/',passport.authenticate('jwt',{session:false}),validator(mangaCreate),isActive,existtitle,addcover_photo, is_propery_of  ,create)
 export default router
