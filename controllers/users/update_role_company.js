@@ -24,6 +24,12 @@ else if(user.role === 0 &&  company.active === false ){
 await user.save()
 await company.save()
  
+if (!user || !company) {
+  return res
+    .status(400)
+    .json({ success: false, message: "Update failed" });
+}
+
 
 
 return res.status(200).json({ success: true, message: "The company is verified" });

@@ -23,6 +23,11 @@ await user.save()
 await author1.save()
 // Buscamos por id
 
+if (!user || !author1) {
+  return res
+    .status(400)
+    .json({ success: false, message: "Update failed" });
+}
 
     
 
