@@ -2,6 +2,7 @@ import User from "../../models/User.js";
 import Author from "../../models/Author.js";
 
 const changerole = async (req, res, next) => {
+  console.log(req.body)
   try {
     const { id } = req.params;
 const user = await User.findById(id)
