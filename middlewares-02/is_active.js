@@ -14,14 +14,14 @@ async function is_active(req, res, next) {
     if (!author.active) {
       return res.status(401).json({ message: 'the Author is inactive' });
     }
-
+/* 
     const company = await Company.findOne({ user_id: userId });
     if (!company) {
       return res.status(404).json({ message: 'Company not found' });
     }
     if (!company.active) {
       return res.status(401).json({ message: 'Company inactive' });
-    }
+    } */
 
     next();
   } catch (err) {

@@ -2,7 +2,7 @@ import Manga from "../models/Manga.js";
 
 
 const property =async (req,res,next)=>{
-    const mangaId=req.body.manga_id
+    const mangaId=req.body.manga_id||req.params.id
     const authorId=req.body.author_id
     try{
 const manga= await Manga.findOne( {_id:mangaId,author_id:authorId} )
