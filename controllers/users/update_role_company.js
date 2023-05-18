@@ -24,7 +24,7 @@ else if(user.role === 0 &&  company.active === false ){
 const newUser = await user.save()
 const newCompany = await company.save()
 if (newUser === user && newCompany === company) {
-  return res.status(200).json({   success: true, message: "The author is verified" });
+  return res.status(200).json({   success: true, message: "The author is verified",newCompany });
 }
 else{
   return res.status(400).json({succes:false, message:"oops an error occurred in the update"})
