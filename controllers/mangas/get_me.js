@@ -2,10 +2,7 @@
 
 let getMe=async(req,res,next)=>{
     try {
-       /*  let queries={}
-        if (req.query.category_id) {
-            queries.category_id=req.query.category_id
-        } */
+       
         const mangas = await Manga.find( { author_id:req.body.author_id })
         .populate('author_id','name -_id')
         .populate('company_id','name')
