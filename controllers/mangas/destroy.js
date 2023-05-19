@@ -9,7 +9,6 @@ let destroy = async(req,res,next)=>{
               success:true,
               message:'deleted'
 
-          
           })
         }
         else{
