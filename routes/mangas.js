@@ -17,7 +17,6 @@ import is_propery_of from '../middlewares-01/is_property_of.js'
 import update from '../controllers/mangas/update.js';
 import destroy from '../controllers/mangas/destroy.js';
 import mangaUpdate from '../schema/manga_update.js';
-=======
 
 
 let router = Router()
