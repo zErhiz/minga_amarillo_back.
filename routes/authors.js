@@ -7,14 +7,16 @@ import validator from '../middlewares-02/validator.js'
 import authorAlreadeExist from '../middlewares-02/authorAlreadeExist.js';
 import passport from '../middlewares-02/passport.js';
 import get_one from '../controllers/authors/get_one.js';
+import admin_active from "../controllers/authors/admin.js"
 const create = controller.create
 let router = Router()
 
 
-/* router.post('/',(req,res,next)=> res.status(200).send('autor creado')) */
-router.get('/',read)
-router.get('/:id',passport.authenticate('jwt',{session:false}),get_one)
-router.post('/',passport.authenticate('jwt',{session:false}),validator(authorSchema),authorAlreadeExist,create)
-/* router.put('/:id',(req,res,next)=> res.status(200).send('autor modificado')) */
-/* router.delete('/:id',(req,res,next)=> res.status(200).send('autor eliminado')) */
+/*  router.post('/',(req,res,next)=> res.status(200).send('autor creado'))  */
+ router.get('/',passport.authenticate('jwt',{session:false}),read)
+ router.get('/admin',passport.authenticate('jwt',{session:false}),admin_active)
+router.get('/:id',passport.authenticate('jwt',{session:false}),get_one) 
+ router.post('/',passport.authenticate('jwt',{session:false}),validator(authorSchema),authorAlreadeExist,create) 
+/*  router.put('/:id',(req,res,next)=> res.status(200).send('autor modificado')) 
+ router.delete('/:id',(req,res,next)=> res.status(200).send('autor eliminado'))  */
 export default router

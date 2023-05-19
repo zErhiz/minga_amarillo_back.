@@ -2,7 +2,7 @@
 
 let getMe=async(req,res,next)=>{
     try {
-       
+
         const mangas = await Manga.find( { author_id:req.body.author_id })
         .populate('author_id','name -_id')
         .populate('company_id','name')
