@@ -1,22 +1,24 @@
 import createHttpError from 'http-errors'
 import Author from '../../models/Author.js' 
+import User from '../../models/User.js'
+
 const controller = {
-    create:  async(req,res,next) => {
-        
-        try
-         {
-            req.body.user_id = '64496465077201479936117f'
-            req.body.active = true
-            console.log(req.body)
-            let one = await Author.create(req.body)
-            return res.status(201).json({
-            success: true,
-            Response: one,
-    
-            })
-        } catch (error) {
-            next(error)
-        }
+  create: async (req, res, next) => {
+    try {
+     
+      const user = req.user
+      req.body.user_id = user._id
+      req.body.active = false
+      console.log(req.body)
+      const newAuthor = await Author.create(req.body)
+      return res.status(201).json({
+        success: true,
+        Response: newAuthor,
+      })
+    } catch (error) {
+      next(error)
     }
-    }
- export default controller 
+  }
+}
+
+export default controller
