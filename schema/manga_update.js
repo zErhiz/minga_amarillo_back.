@@ -12,7 +12,7 @@ description: Joi.string().min(10).message({
 }),cover_photo:Joi.string().uri().message({
     "string.uri":"invalid_url"
 }),
-  category_id: Joi.string()
+  category_id: Joi.any().optional()
   
 })
   export default mangaUpdate

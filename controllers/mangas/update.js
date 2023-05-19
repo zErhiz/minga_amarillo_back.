@@ -7,7 +7,7 @@ let update =async(req,res,next)=>{
             req.params.id,
             req.body,
             {new:true}
-        )
+        ).populate('category_id')
         return res.status(200).json({
             succes:true,
             manga

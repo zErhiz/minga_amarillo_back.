@@ -2,7 +2,10 @@
 
 let getMe=async(req,res,next)=>{
     try {
-    
+       /*  let queries={}
+        if (req.query.category_id) {
+            queries.category_id=req.query.category_id
+        } */
         const mangas = await Manga.find( { author_id:req.body.author_id })
         .populate('author_id','name -_id')
         .populate('company_id','name')
@@ -14,7 +17,7 @@ let getMe=async(req,res,next)=>{
         })
             
         }return res.status(404).json({
-            response:'el manga no esta '
+            response:'manga not found '
         })
 
     } catch (error) {

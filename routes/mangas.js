@@ -24,7 +24,7 @@ router.get('/', get_mangas);
 router.get('/author/:author_id', passport.authenticate('jwt',{session:false}),getMangas);
 router.get('/me', passport.authenticate('jwt',{session:false}),finds_id,getMe)
 router.get('/:id',getOne)
-router.put('/:id',passport.authenticate('jwt',{session:false}),finds_id,is_active, is_propery_of,update)
+router.put('/:id',passport.authenticate('jwt',{session:false}),validator(mangaUpdate),finds_id,is_active, is_propery_of,update)
 router.delete('/:id', passport.authenticate('jwt',{session:false}),finds_id,is_active,is_propery_of,destroy)
 
 router.post('/',passport.authenticate('jwt',{session:false}),validator(mangaCreate),isActive,existtitle,addcover_photo, is_propery_of  ,create)
