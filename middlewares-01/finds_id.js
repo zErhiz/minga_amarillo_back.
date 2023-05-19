@@ -1,7 +1,7 @@
-
 import Author from "../models/Author.js";
 import Company from '../models/Company.js'
 async function finds_id(req, res, next){
+
 
     const author = await Author.findOne({ user_id: req.user._id })
     if(!author){
