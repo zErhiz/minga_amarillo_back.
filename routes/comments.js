@@ -5,6 +5,7 @@ import update from '../controllers/comments/update.js';
 import passport from 'passport';
 import all_from_chapters from '../controllers/comments/all_from_chapters.js';
 import destroy from '../controllers/comments/destroy.js'
+import  {commentValidate}  from '../schemas/comments.js';
 
 let router=Router()
 

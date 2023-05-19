@@ -12,7 +12,7 @@ let all_from_chapters = async(req, res, next)=>{
     } 
    
     if (req.query.order){
-      sort.title = req.query.order
+      sort.comment.createdAt = req.query.order
     }
     if(req.query.page){
       pagination.page=req.query.page
@@ -20,13 +20,17 @@ let all_from_chapters = async(req, res, next)=>{
     if(req.query.limit){
       pagination.limit=req.query.limit
     }
-    console.log(queries)
+    if(req.query.chapter_id){
+      queries.chapter_id=req.query.chapter_id
+    }
+    
+   
     try {
       let all = await Comment
       .find(queries)
       .sort(sort)
       .skip(pagination.page > 0 ? (pagination.page -1)*pagination.limit:0)
-      .limit(pagination.limit> 0 ? pagination.limit : 0)
+      .limit(pagination.limit> 0 ? pagination.limit : 0).populate('user_id')
       return res.status(200).json({
         success:true, response:all
       })
