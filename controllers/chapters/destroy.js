@@ -7,7 +7,7 @@ let destroy = async(req,res,next) => {
         return res.status(200).json({
             succes: true,
             destroyed,
-            message: "Capitulo eliminado",
+            message: "Chapter delete",
         })
     } catch (error) {
         next(error)

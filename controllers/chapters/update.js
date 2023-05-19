@@ -7,12 +7,12 @@ let up_date = async(req,res,next)=>{
             req.body, // puedo modificar todas las propiedades que me envia el cliente (objeto con las modificaciones)
             {new: true} //me devuelve el objeto modificado
         )
-        // console.log(update);
+        
         if(update){
             return res.status(200).json({
                 succes: true,
                 update,
-                message: "el capitulo se modifico"
+                message: "the chapter was removed"
                 
             })
         }

@@ -1,10 +1,14 @@
-import { json } from "express"
+
 import Chapter from "../../models/Chapter.js"
 
 let get_me = async(req,res,next) => {
     try {
-        // console.log('hola');
-        let chapter = await Chapter.find({manga_id : req.query.manga_id})
+        
+        let chapter = await Chapter.find({manga_id : req.query.manga_id}).select('title order pages cover_photo _id')
+        .populate({
+            path: 'manga_id',
+            select: 'title _id'
+        })
         if(chapter){
 
             return res.status(200).json({

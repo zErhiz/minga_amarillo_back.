@@ -5,9 +5,11 @@ import User from "../models/User.js";
 passport.use(
     new passportJwt.Strategy({
         jwtFromRequest: passportJwt.ExtractJwt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: process.env.TOKEN
+        secretOrKey: process.env.TOKEN,
+        
     },				
     async (jwt_payload,done) => {
+        
         try {				
             let user = await User.findOne({_id:jwt_payload.id})
             if (user) {		
