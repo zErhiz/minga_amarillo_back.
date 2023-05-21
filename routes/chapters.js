@@ -5,6 +5,7 @@ import validator from "../middlewares-M04/validator.js"
 import chapterCreate from "../schemas/chapters.js"
 import passport from '../middlewares-M04/passport.js';
 import get_chapters from '../controllers/chapters/get_chapters.js';
+
 import editChapter from '../schemas/editChapter.js'
 import get_one from '../controllers/chapters/get_one.js';
 import coverPhoto from "../middlewares-M04/add_cover_photo.js"
@@ -15,6 +16,7 @@ import destroy from '../controllers/chapters/destroy.js';
 import get_me from '../controllers/chapters/get_me.js';
 import is_property_of from '../middlewares-01/is_property_of.js';
 import is_active from '../middlewares-02/is_active.js';
+import exist_order from "../middlewares-02/exist_order.js"
 
 
 let router = Router()
@@ -31,7 +33,9 @@ router.delete('/:id',passport.authenticate('jwt',{session:false}) ,finds_id, is_
 // , validator(editChapter)
 
 
+
 router.post('/',passport.authenticate('jwt',{session:false}),validator(chapterCreate),next_order,coverPhoto, create)
+
 
   
 export default router
