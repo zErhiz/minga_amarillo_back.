@@ -6,13 +6,13 @@ let get_one = async(req,res, next) => {
         let all = await Chapter.findById(req.params.id).select("-createdAt -updatedAt -__v -cover_photo")
         // console.log(all);
         
-       let next = await Chapter.findOne({
-        manga_id: all.manga_id,
-        order: all.order + 1, 
-       }).select('_id')
-       console.log(next);
         
         if(all){
+            let next = await Chapter.findOne({
+             manga_id: all.manga_id,
+             order: all.order + 1, 
+            }).select('_id')
+            console.log(next);
             return res.status(200).json({
                 succes: true,
                 all,
