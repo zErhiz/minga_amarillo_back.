@@ -14,8 +14,8 @@ let router = Router()
 
 /*  router.post('/',(req,res,next)=> res.status(200).send('autor creado'))  */
  router.get('/',passport.authenticate('jwt',{session:false}),read)
+ router.get('/admin',passport.authenticate('jwt',{session:false}),admin_active)
 router.get('/:id',passport.authenticate('jwt',{session:false}),get_one) 
-router.get('/admin',passport.authenticate('jwt',{session:false}),admin_active)
  router.post('/',passport.authenticate('jwt',{session:false}),validator(authorSchema),authorAlreadeExist,create) 
 /*  router.put('/:id',(req,res,next)=> res.status(200).send('autor modificado')) 
  router.delete('/:id',(req,res,next)=> res.status(200).send('autor eliminado'))  */
