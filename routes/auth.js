@@ -15,6 +15,8 @@ import updateRole from '../controllers/users/update_role.js'
 import updateRoleCompany from "../controllers/users/update_role_company.js"
 
 import isadmin from '../middlewares-02/isadmin.js';
+import upload from '../middlewares-01/upload.js';
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -25,7 +27,8 @@ router.get('/admins',(req,res,next) => res.status(200).json(
     succes : true,
     admins : []
   }))
-  router.post('/signup',validator(userCreateSignUp),accountSignUp, signup)
+  router.post('/signup', upload(),validator(userCreateSignUp), accountSignUp, signup);
+
   router.post('/signin', validator(userCreateSignIn), accountExistsSignIn,isVerified,passwordIsOk, signin)
   router.post('/signout',passport.authenticate('jwt',{session:false}) ,signout) 
 
