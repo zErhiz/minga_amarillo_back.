@@ -4,9 +4,10 @@ import bcryptjs from 'bcryptjs'
 
 let signup = async (req, res, next)=>{
 
-    const photo = req.file
+    console.log( req.file);
+     const {firebaseurl}=req.file ? req.file : ""
 
-    req.body.photo
+    req.body.photo = firebaseurl
     req.body.is_online=false
     req.body.role= 0
     req.body.is_verified=true  

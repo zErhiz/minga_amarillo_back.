@@ -16,6 +16,8 @@ import updateRoleCompany from "../controllers/users/update_role_company.js"
 
 import isadmin from '../middlewares-02/isadmin.js';
 import upload from '../middlewares-01/upload.js';
+import uploadImg from '../services/firebase.cjs';
+
 
 
 /* GET users listing. */
@@ -27,7 +29,7 @@ router.get('/admins',(req,res,next) => res.status(200).json(
     succes : true,
     admins : []
   }))
-  router.post('/signup', upload(),validator(userCreateSignUp), accountSignUp, signup);
+  router.post('/signup',upload(),uploadImg,validator(userCreateSignUp), accountSignUp, signup);
 
   router.post('/signin', validator(userCreateSignIn), accountExistsSignIn,isVerified,passwordIsOk, signin)
   router.post('/signout',passport.authenticate('jwt',{session:false}) ,signout) 

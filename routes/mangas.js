@@ -17,6 +17,8 @@ import is_propery_of from '../middlewares-01/is_property_of.js'
 import update from '../controllers/mangas/update.js';
 import destroy from '../controllers/mangas/destroy.js';
 import mangaUpdate from '../schema/manga_update.js';
+import upload from '../middlewares-01/upload.js';
+import uploadImg from '../services/firebase.cjs';
 
 
 let router = Router()
@@ -30,5 +32,5 @@ router.get('/:id',getOne)
 router.put('/:id',passport.authenticate('jwt',{session:false}),validator(mangaUpdate),finds_id,is_active, is_propery_of,update)
 router.delete('/:id', passport.authenticate('jwt',{session:false}),finds_id,is_active,is_propery_of,destroy)
 
-router.post('/',passport.authenticate('jwt',{session:false}),validator(mangaCreate),isActive,existtitle,addcover_photo, is_propery_of  ,create)
+router.post('/',upload(),uploadImg,passport.authenticate('jwt',{session:false}),validator(mangaCreate),isActive,existtitle,addcover_photo, is_propery_of  ,create)
 export default router

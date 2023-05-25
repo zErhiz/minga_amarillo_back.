@@ -3,7 +3,7 @@ import multer from "multer";
 
 
 function upload() {
-  const storage = multer.diskStorage({ 
+  const storage = multer.memoryStorage({ 
     destination: './public/imgs',
     filename: function (req, file, cb) {
       let extension = file.originalname.slice(file.originalname.lastIndexOf('.'));
