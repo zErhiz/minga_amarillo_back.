@@ -6,13 +6,13 @@ import Manga from "../../models/Manga.js"
 //datos encriptados
 
 let create = async(req,res,next)=>{
-
    console.log( req.file);
    const {firebaseurl}=req.file ? req.file : ""
    req.body.cover_photo = firebaseurl
-    try {  //llamo al modelo manga
-   
-    console.log(req.body);
+   try {  //llamo al modelo manga
+      const author=req.author
+      req.body.author_id =author._id
+      console.log(req.body);
        let one=  await  new Manga(req.body)
        .populate('author_id','name ')
       

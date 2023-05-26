@@ -33,5 +33,5 @@ router.get('/:id',getOne)
 router.put('/:id',passport.authenticate('jwt',{session:false}),validator(mangaUpdate),finds_id,is_active, is_property_of,update)
 router.delete('/:id', passport.authenticate('jwt',{session:false}),finds_id,is_active,is_property_of,destroy)
 
-router.post('/',upload_manga(),uploadImg,passport.authenticate('jwt',{session:false}),validator(mangaCreate),isActive,existtitle,create)
+router.post('/',upload_manga(),uploadImg,passport.authenticate('jwt',{session:false}),validator(mangaCreate),isActive,existtitle,is_property_of,create)
 export default router
