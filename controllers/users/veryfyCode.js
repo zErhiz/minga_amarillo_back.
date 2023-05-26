@@ -11,7 +11,7 @@ let verify_code = async (req, res, next) => {
           { is_verified: true },
           { new: true }
         )
-        return res.redirect('http://localhost:5173/auth');
+        return res.redirect('http://localhost:5173');
 
       } else {
         return res.status(400).json({ message: "Failed to verify user!!!" });
