@@ -6,7 +6,7 @@ const  is_property_of =async (req,res,next)=>{
 try {
     const manga = await Manga.findOne({_id: req.body.manga_id, author_id: req.body.author_id  })
     if(manga){
-      return   next();
+      return  next();
     } else {
         res.status(404).json({
             messege: "Esta manga no es propiedad del autor"

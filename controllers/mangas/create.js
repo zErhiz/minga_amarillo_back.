@@ -13,7 +13,8 @@ let create = async(req,res,next)=>{
     try {  //llamo al modelo manga
    
     console.log(req.body);
-       let one=  await  new Manga(req.body).populate('author_id','name ')
+       let one=  await  new Manga(req.body)
+       .populate('author_id','name ')
       
        await one.save()
        return res.status(201).json({
