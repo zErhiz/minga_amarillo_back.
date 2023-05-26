@@ -13,12 +13,13 @@ import addcover_photo from "../middlewares-M04/add_cover_photo.js"
 import finds_id from '../middlewares-01/finds_id.js'
 import getMe from '../controllers/mangas/get_me.js';
 import is_active from '../middlewares-02/is_active.js';
-import is_propery_of from '../middlewares-01/is_property_of.js'
+import is_property_of from '../middlewares-01/is_property_of.js' 
 import update from '../controllers/mangas/update.js';
 import destroy from '../controllers/mangas/destroy.js';
 import mangaUpdate from '../schema/manga_update.js';
-import upload from '../middlewares-01/upload.js';
+import upload_manga from '../middlewares-01/upload_manga.js'
 import uploadImg from '../services/firebase.cjs';
+/* import upload from '../middlewares-01/upload.js' */
 
 
 let router = Router()
@@ -29,8 +30,8 @@ router.get('/', get_mangas);
 router.get('/author/:author_id', passport.authenticate('jwt',{session:false}),getMangas);
 router.get('/me', passport.authenticate('jwt',{session:false}),finds_id,getMe)
 router.get('/:id',getOne)
-router.put('/:id',passport.authenticate('jwt',{session:false}),validator(mangaUpdate),finds_id,is_active, is_propery_of,update)
-router.delete('/:id', passport.authenticate('jwt',{session:false}),finds_id,is_active,is_propery_of,destroy)
+router.put('/:id',passport.authenticate('jwt',{session:false}),validator(mangaUpdate),finds_id,is_active, is_property_of,update)
+router.delete('/:id', passport.authenticate('jwt',{session:false}),finds_id,is_active,is_property_of,destroy)
 
-router.post('/',upload(),uploadImg,passport.authenticate('jwt',{session:false}),validator(mangaCreate),isActive,existtitle,addcover_photo, is_propery_of  ,create)
+router.post('/',upload_manga(),uploadImg,passport.authenticate('jwt',{session:false}),validator(mangaCreate),isActive,existtitle,create)
 export default router
