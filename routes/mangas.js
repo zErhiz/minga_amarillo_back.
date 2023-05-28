@@ -8,8 +8,6 @@ import getOne from '../controllers/mangas/get_one.js';
 import isActive from '../middlewares-02/is_active.js'
 import existtitle from "../middlewares-M04/exists_title.js"
 import getMangas from '../controllers/mangas/get_mangas_from_autor.js';
-import addcover_photo from "../middlewares-M04/add_cover_photo.js"
-
 import finds_id from '../middlewares-01/finds_id.js'
 import getMe from '../controllers/mangas/get_me.js';
 import is_active from '../middlewares-02/is_active.js';
@@ -33,5 +31,5 @@ router.get('/:id',getOne)
 router.put('/:id',passport.authenticate('jwt',{session:false}),validator(mangaUpdate),finds_id,is_active, is_property_of,update)
 router.delete('/:id', passport.authenticate('jwt',{session:false}),finds_id,is_active,is_property_of,destroy)
 
-router.post('/',upload_manga(),uploadImg,passport.authenticate('jwt',{session:false}),validator(mangaCreate),isActive,existtitle,is_property_of,create)
+router.post('/',upload_manga(),uploadImg,passport.authenticate('jwt',{session:false}),validator(mangaCreate),isActive,existtitle,create)
 export default router
