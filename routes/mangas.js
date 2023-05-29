@@ -276,7 +276,7 @@ router.get('/:id',getOne)
  *       500:
  *         description: Internal server error
  */
-router.put('/:id',passport.authenticate('jwt',{session:false}),validator(mangaUpdate),finds_id,is_active, is_propery_of,update)
+router.put('/:id',passport.authenticate('jwt',{session:false}),validator(mangaUpdate),finds_id,is_active, is_property_of,update)
 
 /**
  * @swagger
@@ -319,7 +319,7 @@ router.put('/:id',passport.authenticate('jwt',{session:false}),validator(mangaUp
  *       500:
  *         description: Internal server error
  */
-router.delete('/:id', passport.authenticate('jwt',{session:false}),finds_id,is_active,is_propery_of,destroy)
+router.delete('/:id', passport.authenticate('jwt',{session:false}),finds_id,is_active,is_property_of,destroy)
 
 /**
  * @swagger
