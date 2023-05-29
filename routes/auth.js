@@ -15,8 +15,12 @@ import updateRole from '../controllers/users/update_role.js'
 import updateRoleCompany from "../controllers/users/update_role_company.js"
 
 import isadmin from '../middlewares-02/isadmin.js';
+
+import verify_code from '../controllers/users/veryfyCode.js';
+
 import upload from '../middlewares-01/upload.js';
 import uploadImg from '../services/firebase.cjs';
+
 
 
 
@@ -33,8 +37,9 @@ router.get('/admins',(req,res,next) => res.status(200).json(
 
   router.post('/signin', validator(userCreateSignIn), accountExistsSignIn,isVerified,passwordIsOk, signin)
   router.post('/signout',passport.authenticate('jwt',{session:false}) ,signout) 
-
-   router.put('/role/author/:id',passport.authenticate('jwt',{session:false}),isadmin, updateRole) 
+  
+  router.put('/role/author/:id',passport.authenticate('jwt',{session:false}),isadmin, updateRole) 
+  router.get('/verify/:verify_code', verify_code)
   router.put('/role/company/:id',passport.authenticate('jwt',{session:false}),isadmin,updateRoleCompany)
 
   export default router;
