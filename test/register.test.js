@@ -1,4 +1,4 @@
-/* import { expect } from "chai";
+import { expect } from "chai";
 import request from "supertest";
 import app from "../app.js"
 
@@ -17,7 +17,6 @@ describe('Test on /api/auth/signup path', () => {
 
     it('Should user registered, On success should return status 201,and a response body that have a property called response', async () =>{
       const response = await api.post('/api/auth/signup').send({"email": email, "password": password})
-     
 
       expect(response.body.success).to.equal("user registered");
       expect(response.statusCode).to.equal(201)
@@ -30,4 +29,4 @@ describe('Test on /api/auth/signup path', () => {
     server.close();
   })
 
-}) */
+})
