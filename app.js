@@ -8,8 +8,11 @@ import logger  from 'morgan';
 import cors from 'cors';
 import {__dirname } from './utils.js';
 import indexRouter from'./routes/index.js';
-
+import swaggerUI from 'swagger-ui-express'
+import swaggerJsDoc from 'swagger-jsdoc';
 import notFound from './middelwares-m-03/notFound.js';
+/*  import trainAI from './chatbotServices.js'   */
+
 // import errorHandler from './middelwares-m-03/errorHandler.js';
 
 import  './config/database.js';
@@ -19,7 +22,37 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+//swagger
 
+const swaggerSpec = {
+  definition: {
+    openapi: "3.0.0",  //version de openapi que sigue las convenciones y estructura definidas en la versión 3.0.0 de OpenAPI.
+    info: {
+      title: "Minga Api",
+      version: "1.0.0",
+    },
+    servers: [
+      {
+        url: "http://localhost:8000",
+      },
+    ],
+    security: [
+      {
+        jwt: [],
+      },
+    ],
+    components: {
+      securitySchemes: {
+        jwt: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+  },
+  apis: [`${path.join(__dirname, "./routes/*.js")}`], //todos los archivos con .js__dirname se utiliza con path.join() para construir rutas absolutas y evitar problemas relacionados con la resolución de rutas relativas
+};
 
 //middlewares
 app.use(cors());
@@ -30,7 +63,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', indexRouter);
-
+//swaggerUI.serve:  middleware de Swagger UI que se encarga de servir los archivos estáticos necesarios para la interfaz de Swagger, como los estilos CSS y los scripts JavaScript.
+//swaggerUI.setup(swaggerJsDoc(swaggerSpec)): Configura la interfaz de Swagger utilizando los datos de especificación que se generaron previamente con swaggerJsDoc. Esto incluye el título de la documentación, la versión de la API y los endpoints definidos.
+app.use("/apidoc", swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)));
 app.use(notFound)
 // app.use(errorHandler)
 
@@ -39,7 +74,8 @@ app.use(notFound)
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
+//train the AI
+/*  trainAI.trainChatBotIA();   */
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development

@@ -25,7 +25,7 @@ const newUser = await user.save()
 const newCompany = await company.save()
 if (newUser === user && newCompany === company) {
 
-  return res.status(200).json({   success: true, message: "The author is verified",newCompany });
+  return res.status(200).json({   success: true, message: "The Company is verified",newCompany });
 
 }
 else{
