@@ -1,4 +1,4 @@
-//const createError = require('http-errors');
+ //const createError = require('http-errors');
 import 'dotenv/config.js'
 import createError from 'http-errors'
 import express from 'express'
@@ -8,8 +8,10 @@ import logger  from 'morgan';
 import cors from 'cors';
 import {__dirname } from './utils.js';
 import indexRouter from'./routes/index.js';
+
 import swaggerUI from 'swagger-ui-express'
 import swaggerJsDoc from 'swagger-jsdoc'; // es el módulo que permite definir la especificación Swagger utilizando comentarios en el código.
+
 import notFound from './middelwares-m-03/notFound.js';
 /*  import trainAI from './chatbotServices.js'   */
 
@@ -17,6 +19,8 @@ import notFound from './middelwares-m-03/notFound.js';
 
 import  './config/database.js';
 const app = express();
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -54,8 +58,10 @@ const swaggerSpec = {  //swaggerSpec: Este objeto contiene la definición de la 
   apis: [`${path.join(__dirname, "./routes/*.js")}`], //todos los archivos con .js__dirname se utiliza con path.join() para construir rutas absolutas y evitar problemas relacionados con la resolución de rutas relativas
 };
 
+
+
 //middlewares
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

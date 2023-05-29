@@ -6,6 +6,7 @@ let signin = async(req, res, next)=>{
   await User.findOneAndUpdate(
     {email:req.body.email}, 
     {is_online:true},
+    { new: true }
     
    )
    const token = jwt.sign(

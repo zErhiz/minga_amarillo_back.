@@ -8,15 +8,16 @@ import getOne from '../controllers/mangas/get_one.js';
 import isActive from '../middlewares-02/is_active.js'
 import existtitle from "../middlewares-M04/exists_title.js"
 import getMangas from '../controllers/mangas/get_mangas_from_autor.js';
-import addcover_photo from "../middlewares-M04/add_cover_photo.js"
-
 import finds_id from '../middlewares-01/finds_id.js'
 import getMe from '../controllers/mangas/get_me.js';
 import is_active from '../middlewares-02/is_active.js';
-import is_propery_of from '../middlewares-01/is_property_of.js'
+import is_property_of from '../middlewares-01/is_property_of.js' 
 import update from '../controllers/mangas/update.js';
 import destroy from '../controllers/mangas/destroy.js';
 import mangaUpdate from '../schema/manga_update.js';
+import upload_manga from '../middlewares-01/upload_manga.js'
+import uploadImg from '../services/firebase.cjs';
+/* import upload from '../middlewares-01/upload.js' */
 
 
 let router = Router()
@@ -209,6 +210,7 @@ router.get('/me', passport.authenticate('jwt',{session:false}),finds_id,getMe)
  */
 router.get('/:id',getOne)
 
+
 /**
  * @swagger
  * /api/mangas/{id}:
@@ -391,5 +393,10 @@ router.delete('/:id', passport.authenticate('jwt',{session:false}),finds_id,is_a
  *       500:
  *         description: Internal server error
  */
-router.post('/',passport.authenticate('jwt',{session:false}),validator(mangaCreate),isActive,existtitle,create)
+
+
+
+
+router.post('/',upload_manga(),uploadImg,passport.authenticate('jwt',{session:false}),validator(mangaCreate),isActive,create)
+
 export default router

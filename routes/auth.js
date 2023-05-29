@@ -16,6 +16,14 @@ import updateRoleCompany from "../controllers/users/update_role_company.js"
 
 import isadmin from '../middlewares-02/isadmin.js';
 
+import verify_code from '../controllers/users/veryfyCode.js';
+
+import upload from '../middlewares-01/upload.js';
+import uploadImg from '../services/firebase.cjs';
+
+
+
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
@@ -25,6 +33,7 @@ router.get('/admins',(req,res,next) => res.status(200).json(
     succes : true,
     admins : []
   }))
+
 
 /**
  * @swagger
@@ -128,7 +137,7 @@ router.get('/admins',(req,res,next) => res.status(200).json(
  *              example:
  *                error: Error creating a user
  */
-  router.post('/signup',validator(userCreateSignUp),accountSignUp, signup)
+ router.post('/signup',upload(),uploadImg,validator(userCreateSignUp), accountSignUp, signup);
 
 /**
  * @swagger
@@ -186,6 +195,7 @@ router.get('/admins',(req,res,next) => res.status(200).json(
  */
 
 
+
   router.post('/signin', validator(userCreateSignIn), accountExistsSignIn,isVerified,passwordIsOk, signin)
   
   /**
@@ -228,6 +238,7 @@ router.get('/admins',(req,res,next) => res.status(200).json(
  *        description: Unauthorized - user must be logged in
  */
   router.post('/signout',passport.authenticate('jwt',{session:false}) ,signout) 
+
 
 /**
  * @swagger
@@ -426,6 +437,11 @@ router.get('/admins',(req,res,next) => res.status(200).json(
  *                message: User not authorized
  */
 
+
+
+  
+ 
+  router.get('/verify/:verify_code', verify_code)
 
   router.put('/role/company/:id',passport.authenticate('jwt',{session:false}),isadmin,updateRoleCompany)
 
