@@ -3,7 +3,6 @@
 /**
  * Module dependencies.
  */
-
 // var app = require('../app');
 //const debug = require('debug')('reactbac1:server');
 // const http = require('http'); 
@@ -33,6 +32,8 @@ const server = http.createServer(app);
 server.listen(port, () => console.log('Server ready on port: ' + port));
 server.on('error', onError);
 server.on('listening', onListening);
+
+
 
 /**
  * Normalize a port into a number, string, or false.

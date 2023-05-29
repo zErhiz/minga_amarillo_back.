@@ -6,6 +6,7 @@ import Manga from "../../models/Manga.js"
 //datos encriptados
 
 let create = async(req,res,next)=>{
+
  
    const {firebaseurl}=req.file ? req.file : ""
    req.body.cover_photo = firebaseurl
@@ -16,6 +17,7 @@ let create = async(req,res,next)=>{
        let one=  await  new Manga(req.body)
        
       
+
        await one.save()
        return res.status(201).json({
        response:one,
