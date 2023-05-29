@@ -8,6 +8,8 @@ import ChapterRouter from "./chapters.js";
 import MangasRouter from "./mangas.js";
 import commentRouter from "./comments.js"
 
+
+
 //var express = require('express');
 const router = express.Router();
 
@@ -15,6 +17,8 @@ const router = express.Router();
 router.get("/", function (req, res, next) {
   res.render("index", { title: "MINGA API", subtitle: "endpoints of minga" });
 });
+
+
 router.use("/auth", userRouter);
 router.use("/authors", authorRouter);
 router.use("/categories", categoryRouter);
@@ -22,4 +26,5 @@ router.use("/companies", CompaniesRouter);
 router.use("/chapters", ChapterRouter);
 router.use("/mangas", MangasRouter);
 router.use("/comments", commentRouter)
+
 export default router;
