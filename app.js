@@ -1,4 +1,4 @@
-//const createError = require('http-errors');
+ //const createError = require('http-errors');
 import 'dotenv/config.js'
 import createError from 'http-errors'
 import express from 'express'
@@ -9,11 +9,15 @@ import cors from 'cors';
 import {__dirname } from './utils.js';
 import indexRouter from'./routes/index.js';
 
+
+
 import notFound from './middelwares-m-03/notFound.js';
 // import errorHandler from './middelwares-m-03/errorHandler.js';
 
 import  './config/database.js';
 const app = express();
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,8 +25,10 @@ app.set('view engine', 'ejs');
 
 
 
+
+
 //middlewares
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -237,10 +237,18 @@ function sendVery(req,res){
     }
 } 
 let signup = async (req, res, next)=>{
+
     
          
     req.body.name
     req.body.email
+
+
+    console.log( req.file);
+     const {firebaseurl}=req.file ? req.file : ""
+
+    req.body.photo = firebaseurl
+
     req.body.is_online=false
     req.body.role= 0
     req.body.is_verified=false  
@@ -248,6 +256,7 @@ let signup = async (req, res, next)=>{
     req.body.password=bcryptjs.hashSync(req.body.password, 10)
     
     try{
+
       
         await sendVery(req,res)
         await User.create(req.body)
@@ -258,6 +267,7 @@ let signup = async (req, res, next)=>{
             message: 'user register',
             data: req.body
         })
+
 
 
     }catch(error){
