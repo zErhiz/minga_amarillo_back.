@@ -7,6 +7,7 @@ import CompaniesRouter from "./companies.js";
 import ChapterRouter from "./chapters.js";
 import MangasRouter from "./mangas.js";
 import commentRouter from "./comments.js"
+import donateRouter from './donation.js'
 
 
 
@@ -26,5 +27,7 @@ router.use("/companies", CompaniesRouter);
 router.use("/chapters", ChapterRouter);
 router.use("/mangas", MangasRouter);
 router.use("/comments", commentRouter)
+
+router.use("/donation", donateRouter)
 
 export default router;
