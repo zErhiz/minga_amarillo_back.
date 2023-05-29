@@ -9,7 +9,7 @@ let mangaCreate=Joi.object({
 description: Joi.string().required().min(10).message({
   "any.required": "Description is a required field.",
   "string.empty": "Description cannot  be an empty field and need 10 leters."
-}),cover_photo:Joi.string().required(),
+}),cover_photo:Joi.string().uri(),
     category_id: Joi.string().required()
   })
   export default mangaCreate

@@ -6,17 +6,19 @@ import Manga from "../../models/Manga.js"
 //datos encriptados
 
 let create = async(req,res,next)=>{
-
-    
-    try {  //llamo al modelo manga
-    req.body.author_id= '64496465077201479936117f'
-    req.body.company_id='64496465077201479936118e'
-    req.body.cover_photo="https://i.postimg.cc/ydWYPLCC/ao-haru-ride-752359695-large.jpg"
-    console.log(req.body);
-       let one=  new Manga(req.body)
+ 
+   const {firebaseurl}=req.file ? req.file : ""
+   req.body.cover_photo = firebaseurl
+   try {  //llamo al modelo manga
+    /*   const author=req.author
+      req.body.author_id =author._id */
+      
+       let one=  await  new Manga(req.body)
+       
+      
        await one.save()
        return res.status(201).json({
-       reponse:one,
+       response:one,
        success:true,
        timestamps:one.createdAt
 
@@ -24,7 +26,7 @@ let create = async(req,res,next)=>{
 
     } catch (error) {
         
-        next(createHttpError )
+       return  next(createHttpError(500,error) )
     }
 }
 export default create
