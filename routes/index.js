@@ -26,8 +26,8 @@ router.use("/categories", categoryRouter);
 router.use("/companies", CompaniesRouter);
 router.use("/chapters", ChapterRouter);
 router.use("/mangas", MangasRouter);
-router.use("/comments", commentRouter)
+router.use("/comments", commentRouter);
+router.use("/donation", donateRouter);
 
-router.use("/donation", donateRouter)
 
 export default router;
