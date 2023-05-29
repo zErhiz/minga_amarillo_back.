@@ -12,15 +12,17 @@ describe('Test on /api/auth/signup path', () => {
   })
 
   describe('POST /api/auth/signup', () => {
-    const email = "wowaura123456hts0@gmail.com";
-    const password = "qwertyuiop12";
+    const email = "wñpss0sdsgsuassslsados@gmail.com";
+    const password = "qweuiop12";
 
-    it('Should create a new user, On success should return status 201', async () =>{
+    it('Should user registered, On success should return status 201,and a response body that have a property called response', async () =>{
       const response = await api.post('/api/auth/signup').send({"email": email, "password": password})
-      console.log(response.body);
-      console.log(response.statusCode);
+     
 
-      expect(response.statusCode).to.equal(201);
+      expect(response.body.success).to.equal("user registered");
+      expect(response.statusCode).to.equal(201)
+      expect(response.body).to.have.property("response")  
+      
     })
   })
 
@@ -28,5 +30,4 @@ describe('Test on /api/auth/signup path', () => {
     server.close();
   })
 
-})
- */
+}) */

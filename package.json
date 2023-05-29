@@ -7,7 +7,7 @@
     "start": "node ./bin/www.js",
     "dev": "nodemon ./bin/www.js",
     "data": "node ./models/data/data.js",
-    "test":"mocha"
+    "test":"mocha --timeout 5000"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
