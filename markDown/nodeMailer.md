@@ -11,7 +11,7 @@ La función hace lo siguiente:
 IMPORTANTE--------------
 
 - Crea un objeto transporter usando nodemailer.createTransport con la configuración de SMTP para Gmail. Se usan las variables de entorno MAILING_EMAIL y MAILING_PASSWORD para autenticarse con la cuenta de Gmail.
-Nota: para este paso el EMAIL Y EMAIL_PASS tienes que crearlos, los pasos son:
+Nota: para este paso el EMAIL Y PASSWORD tienes que crearlos, los pasos son:
     - crearse una cuenta de gmail
     -ir a 'GESTIONAR TU CUENTA DE GOOGLE'
     -una vez alli buscar la opcion seguridad que esta a un costado izquierdo
