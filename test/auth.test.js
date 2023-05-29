@@ -18,7 +18,7 @@ describe('Test on /api/auth path', () => {
   describe('POST /api/auth/signup', () => {
     it('On success should return status 201 and a message with: "user registered"', async () => {
       const requestBody = {
-        email: "soyproaaaaaaaa@gmail.com",
+        email: "soyproaaaaaasaa@gmail.com",
         password: "hola1234",
         photo: "https://hola.com"
       };
@@ -34,7 +34,7 @@ describe('Test on /api/auth path', () => {
   });
 
   describe('POST /api/auth/signin', () => {
-    it('On success should return status 200 and a message with: "user signed in!"', async () => {
+    it('On success should return status 200 and a message with: "user signed in!" and an object that is a string and a response body that has a email that is equal to the request body', async () => {
       const signinRequestBody  = {
         email: "silvina@mh.com.ar",
         password: "hola1234"

@@ -24,6 +24,7 @@
     "dotenv": "^16.0.3",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "http": "^0.0.1-security",
     "http-errors": "~1.6.3",
     "joi": "^17.9.2",
     "joi-oid": "^1.1.2",

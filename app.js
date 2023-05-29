@@ -9,7 +9,7 @@ import cors from 'cors';
 import {__dirname } from './utils.js';
 import indexRouter from'./routes/index.js';
 import swaggerUI from 'swagger-ui-express'
-import swaggerJsDoc from 'swagger-jsdoc';
+import swaggerJsDoc from 'swagger-jsdoc'; // es el módulo que permite definir la especificación Swagger utilizando comentarios en el código.
 import notFound from './middelwares-m-03/notFound.js';
 /*  import trainAI from './chatbotServices.js'   */
 
@@ -24,7 +24,7 @@ app.set('view engine', 'ejs');
 
 //swagger
 
-const swaggerSpec = {
+const swaggerSpec = {  //swaggerSpec: Este objeto contiene la definición de la especificación Swagger. Aquí se establece la información básica de la API, como el título y la versión. También se especifica la URL base de los servidores en los que se ejecutará la API.
   definition: {
     openapi: "3.0.0",  //version de openapi que sigue las convenciones y estructura definidas en la versión 3.0.0 de OpenAPI.
     info: {
@@ -36,12 +36,12 @@ const swaggerSpec = {
         url: "http://localhost:8000",
       },
     ],
-    security: [
+    security: [     // Esta sección especifica el esquema de seguridad utilizado por la API. En este caso, se define un esquema de seguridad llamado "jwt" que utiliza el formato "bearer" para los tokens JWT.
       {
         jwt: [],
       },
     ],
-    components: {
+    components: { // Aquí se definen los componentes utilizados en la especificación Swagger. se define el esquema de seguridad "jwt".
       securitySchemes: {
         jwt: {
           type: "http",
