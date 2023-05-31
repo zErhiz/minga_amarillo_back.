@@ -61,7 +61,7 @@ const swaggerSpec = {  //swaggerSpec: Este objeto contiene la definición de la 
 
 
 //middlewares
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
